@@ -1,18 +1,25 @@
 /* author: Shelby Hendrickx */
 #include <iostream>
-#include <string.h>
+#include <cstring>
 #include "../include/sstring.h"
 using namespace std;
 
 SString::SString(const char* str)
-    :str{str}, len{strlen(str)}
-{ }
+    :len{strlen(str)}, str{new char[len + 1]}
+{
+    strcpy(this->str, str);
+}
 
 SString::SString(const SString& str) 
-    :str{str.str}, len{str.len} 
-{ }
+    :len{str.len}, str{new char[len + 1]}
+{ 
+    strcpy(this->str, str.str);
+}
 
-SString::~SString() {}
+SString::~SString()
+{
+    delete[] str;
+}
 
 size_t SString::getLength() const
 {
@@ -33,8 +40,10 @@ SString SString::operator+(const SString& str) const
 {
     char* cat = new char[len + str.len + 1];
     strcpy(cat, this->str);
-    strcpy(&cat[this->len], str.str);
+    strcpy(&cat[len], str.str);
+
     SString result(cat);
+
     delete[] cat;
     return result;
 }

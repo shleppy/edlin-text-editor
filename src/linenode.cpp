@@ -14,15 +14,18 @@ LineNode* LineNode::getNext() const
 
 void LineNode::appendNextNode(LineNode *node)
 {
-    // ERROR HERE
     next = node;
 }
 
-SString LineNode::getData() const
+const SString& LineNode::getData() const
 {
     return data;
 }
 
+void LineNode::setData(const SString& str)
+{
+    data = str;
+}
 
 void LineNode::printLine() const
 {

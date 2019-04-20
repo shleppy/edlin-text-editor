@@ -9,33 +9,36 @@
 #include "../include/commands/commandfactory.h"
 #include "../include/commands/command.h"
 
+#include <iostream>
 using namespace std;
 
 EditorGUI::EditorGUI()
-    :text{text}
 {
-    string fileName;
-    cout << "Enter file name: ";
-    getline(cin, fileName);
-    file.open(fileName);
+    text = new TextList();
 }
 
 EditorGUI::EditorGUI(const char* file)
 {
+    text = new TextList();
+
+    cout << "got here" << endl;
     ifstream fs(file);
     if (!fs.is_open()) return;
+
     string line;
     while (!fs.eof()) 
     {
-        SString sline(line.c_str());
         getline(fs, line);
-        text.appendLine(sline);
+        SString *sline = new SString(line.c_str());
+        text->appendLine(*sline);
+        delete sline;
     }
+    fs.close();
 }
 
 EditorGUI::~EditorGUI()
 {
-    file.close();
+    delete text;
 }
 
 void EditorGUI::start()
@@ -49,10 +52,10 @@ void EditorGUI::start()
 
         SString *sline = new SString(line.c_str());
         
-        Command *cmd = CommandFactory::getCommand(text, sline->getData());
+        Command *cmd = CommandFactory::getCommand(*text, sline->getData());
         //currentCommand = cmd;
 
-        int result = cmd->execute(text, *sline);
+        int result = cmd->execute(*text, sline->getData());
         if (result == -1)
             cout << "Unhandled exception" << endl;
         

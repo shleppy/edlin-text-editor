@@ -12,10 +12,8 @@ using namespace std;
 class EditorGUI 
 {
     private:
-
         //Command *currentCommand = nullptr;
-        TextList text;
-        ofstream file;
+        TextList *text;
     public:
         EditorGUI();
         EditorGUI(const char* file);

@@ -9,8 +9,8 @@
 class SString
 {
 private:
-    const size_t len;
-    const char *str;
+    size_t len;
+    char *str;
 public:
     /**
      * Constructor with content
@@ -28,7 +28,7 @@ public:
     //SString(SString&& other);
 
     /**
-     * Destructorstr
+     * Destructor
      */
     virtual ~SString();
 
