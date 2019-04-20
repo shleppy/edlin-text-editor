@@ -2,16 +2,15 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include "../../include/commands/command.h"
+#include "../../include/commands/appendcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
 using namespace std;
 
-AppendCommand::AppendCommand(TextList const& text)
-    :text{text}
+AppendCommand::AppendCommand()
 {}
 
-int AppendCommand::execute()
+int AppendCommand::execute(TextList& text, const SString& str)
 {
     string line;
     bool isInvalid = true;
@@ -19,10 +18,10 @@ int AppendCommand::execute()
     {
         cout << "*";
         cin >> line;
-        if (line.length <= 80) isInvalid = false;
+        if (line.length() <= 80) isInvalid = false;
     }
 
-    SString str(line.c_str);
-    text.appendLine(str);
+    SString ret(line.c_str());
+    text.appendLine(ret);
     return 0;
 }

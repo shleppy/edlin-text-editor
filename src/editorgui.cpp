@@ -1,44 +1,53 @@
 /* author: Shelby Hendrickx */
 #include <iostream>
+#include <fstream>
+#include <iomanip>
 #include <string>
+
 #include "../include/editorgui.h"
+#include "../include/sstring.h"
+#include "../include/commands/commandfactory.h"
+#include "../include/commands/command.h"
 
 using namespace std;
 
 EditorGUI::EditorGUI()
+    :currentCommand{nullptr}
 {
-    currentCommand = Commands::INITIAL;
+}
+
+EditorGUI::EditorGUI(const char* file)
+{
+    ifstream fs(file);
+    if (!fs.is_open()) return;
+    string line;
+    while (!fs.eof()) 
+    {
+        SString sline(line.c_str());
+        getline(fs, line);
+        text.appendLine(sline);
+    }
 }
 
 void EditorGUI::start()
 {
-    while(currentCommand != Commands::QUIT)
+    bool running = true;
+    while(running)
     {
         string line;
-        cout << "*";
-        try {
-            getline(cin, line);
-            getCommand(line);
-        } catch (invalid_argument &e) {
-            cerr << "Command not found: " << e.what() << endl;
-        }
+        getline(cin, line);
+
+        SString sline(line.c_str());
+        
+        Command *cmd = CommandFactory::getCommand(text, sline.getData());
+        currentCommand = cmd;
+
+        int result = cmd->execute(text, sline);
+        if (result == -1)
+            cout << "Unhandled exception" << endl;
+        
+        delete cmd;
     }
 }
-
-Commands getCommand(string line)
-{
-    switch (line[0]) 
-    {
-        case 'a': return Commands::APPEND;
-        case 'p': return Commands::PRINT;
-        case 'i': return Commands::INSERT;
-        case 'd': return Commands::DELETE;
-        case 'x': return Commands::EXTEND;
-        case 'l': return Commands::LOAD;
-        case 's': return Commands::SAVE;
-        case 'h': return Commands::HELP;
-        default: throw new invalid_argument("Command not found");
-    }
-} 
 
  

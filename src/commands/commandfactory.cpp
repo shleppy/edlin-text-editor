@@ -4,19 +4,18 @@
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
 
-Command* CommandFactory::getCommand(TextList const& text, char* line) {
-    const SString scmd(line);
+Command* CommandFactory::getCommand(TextList const& text, const SString& str) {
     Command *cmd;
-    switch (line[0]) 
+    switch (str.getData()[0]) 
     {
-        case 'a': cmd = new AppendCommand(text);
-        case 'p': cmd = new PrintCommand(text, scmd);
-        case 'i': cmd = new InsertCommand(text, scmd);
-        case 'd': cmd = new DeleteCommand(text, scmd);
-        case 'x': cmd = new ExtendCommand(text, scmd);
-        case 'l': cmd = new LoadCommand(text);
-        case 's': cmd = new SaveCommand(text);
-        case 'h': cmd = new HelpCommand(text);
+        case 'a': cmd = new AppendCommand();
+        case 'p': cmd = new PrintCommand();
+        case 'i': cmd = new InsertCommand();
+        case 'd': cmd = new DeleteCommand();
+        case 'x': cmd = new ExtendCommand();
+        case 'l': cmd = new LoadCommand();
+        case 's': cmd = new SaveCommand();
+        case 'h': cmd = new HelpCommand();
         default: return nullptr;
     }
     return cmd;

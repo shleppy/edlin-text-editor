@@ -1,6 +1,7 @@
 /* author: Shelby Hendrickx */
 #ifndef TEXTLIST_H
 #define TEXTLIST_H
+#include <cstring>
 #include "sstring.h"
 #include "linenode.h"
 
@@ -13,9 +14,9 @@ class TextList
         LineNode *header;
         LineNode *footer;
         LineNode *runner;
-        int numOfLines;
+        size_t numOfLines = 0;
 
-        void setRunner();
+        void setRunner(size_t i);
 
     public:
         /**
@@ -26,12 +27,12 @@ class TextList
         /**
          * Destructor
          */
-        ~TextList();
+        virtual ~TextList();
 
         /**
          * Appends parameter s as a new line to the text file.
          */ 
-        void appendLine(SString s);
+        void appendLine(const SString& str);
 
         /**
          * Prints all lines
@@ -39,14 +40,21 @@ class TextList
         void printAll();
 
         /**
+         * Print a single line
+         */
+        void printLine(const size_t line);
+
+        /**
          * Returns number of lines in the text file
          */ 
-        int numberOfLines();
+        size_t numberOfLines() const;
 
         /**
          * Inserts parameter s at line n pushing back previously existing lines
          */ 
-        void insertLine(SString s, int n);
+        void insertLine(const SString& str, const size_t n);
+
+        void deleteLine(const size_t line);
 };
 
 #endif // TEXTLIST_H

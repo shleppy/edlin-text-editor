@@ -2,18 +2,18 @@
 #ifndef EDITORGUI_H
 #define EDITORGUI_C
 
-#include <string>
-
-enum class Commands {APPEND, PRINT, INSERT, DELETE, EXTEND, LOAD, SAVE, QUIT, HELP, INITIAL};
+#include "commands/command.h"
+#include "textlist.h"
 
 class EditorGUI 
 {
     private:
-        Commands currentCommand;
-
-        Commands getCommand(string line);
+        /// Current state
+        Command *currentCommand;
+        TextList text;
     public:
         EditorGUI();
+        EditorGUI(const char* file);
         void start();
 };
 

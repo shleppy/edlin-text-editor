@@ -4,40 +4,35 @@
 #include "sstring.h"
 
 /**
- * Simple Singly Linked List
+ * Simple singly linked list node containing a string line
  */
 class LineNode
 {
-    private:
-        LineNode *next;
-        SString data;
-    public:
-        LineNode(SString data);
+private:
+    LineNode *next;
+    SString data;
+public:
+    LineNode(const SString& data);
 
-        /**
-         * Returns next node
-         */ 
-        LineNode* getNext();
+    /**
+     * Returns next node
+     */ 
+    LineNode* getNext() const;
 
-        /**
-         * Set data
-         */ 
-        void setData(SString data);
+    /**
+     * Get data
+     */ 
+    SString getData() const;
 
-        /**
-         * Get data
-         */ 
-        SString getData();
+    /**
+     * Sets node as next
+     */ 
+    void appendNextNode(LineNode *node);
 
-        /**
-         * Sets node as next
-         */ 
-        void appendNextNode(LineNode *node);
-
-        /**
-         * Prints data
-         */ 
-        void printLine();
+    /**
+     * Prints data
+     */ 
+    void printLine() const;
 };
 
 #endif // LINENODE_H

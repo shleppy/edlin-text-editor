@@ -3,21 +3,16 @@
 #include "../include/linenode.h"
 using namespace std;
 
-LineNode::LineNode(SString str)
+LineNode::LineNode(const SString& str)
     :data{str}, next{nullptr}
 { }
 
-LineNode* LineNode::getNext()
+LineNode* LineNode::getNext() const
 {
     return next;
 }
 
-void LineNode::setData(SString str)
-{
-    data = str;
-}
-
-SString LineNode::getData()
+SString LineNode::getData() const
 {
     return data;
 }
@@ -27,7 +22,7 @@ void LineNode::appendNextNode(LineNode *node)
     next = node;
 }
 
-void LineNode::printLine()
+void LineNode::printLine() const
 {
     data.print();
     cout << "\n";

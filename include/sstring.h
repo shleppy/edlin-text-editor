@@ -1,21 +1,53 @@
 /* author: Shelby Hendrickx */
 #ifndef SSTRING_H
 #define SSTRING_H
+#include <cstring>
 
 /**
  * simple string representation of char[] with length variable
  */
 class SString
 {
-    private:
-        int len;
-        char *str;
-    public:
-        SString(char* str);
-        SString(const SString &other);
-        ~SString();
-        void print();
-        int getLength();
+private:
+    const size_t len;
+    const char *str;
+public:
+    /**
+     * Constructor with content
+     */
+    SString(const char *str);
+
+    /**
+     * Copy constructor
+     */ 
+    SString(const SString& other);
+
+    /**
+     * Move constructor
+     */ 
+    //SString(SString&& other);
+
+    /**
+     * Destructor
+     */
+    virtual ~SString();
+
+    char* getData() const;
+
+    /**
+     * Print content
+     */
+    void print() const;
+
+    /**
+     * Get Length of content
+     */
+    size_t getLength() const;
+
+    /**
+     * Plus operator for concatenating strings
+     */
+    SString operator+(const SString& str) const;
 };
 
 #endif // SSTRING_H

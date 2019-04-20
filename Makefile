@@ -1,15 +1,40 @@
-CC=g++ 
-CXXFLAGS=-std=c++0x
-CFLAGS=-I.
-DEP=headers/editorgui.h headers/linenode.h headers/sstring.h headers/textlist.h
-OBJECTS=main.o editorgui.o linenode.o sstring.o textlist.o
-LIBS=
+CC       := g++ 
+CXXFLAGS := -std=c++0x
+CFLAGS   := -I.
+RM       := rm -rvf
+BUILD    := ./build
+OBJ_DIR  := $(BUILD)/objects
+APP_DIR  := $(BUILD)/apps
+TARGET   := edline
+INCLUDE  := -Iinclude/
+SRC      :=                       \
+	$(wildcard src/commands/*.cpp) \
+	$(wildcard src/*.cpp)          \
 
-editortest: $(OBJECTS)
+OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
+
+all: build $(APP_DIR)/$(TARGET)
+
+edline: $(OBJECTS)
 	$(CC) $(CXXFLAGS) $(LIBS) $(CFLAGS) $^ -o $@
 
-%.o: %.cpp $(DEP)
-	$(CC) $(CXXFLAGS) $(LIBS) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
+
+$(APP_DIR)/$(TARGET): $(OBJECTS)
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(LDFLAGS) -o $(APP_DIR)/$(TARGET) $(OBJECTS)
+
+.PHONY: all build clean debug release
+
+build:
+	@mkdir -p $(APP_DIR)
+	@mkdir -p $(OBJ_DIR)
+
+debug: CXXFLAGS += -DDEBUG -g
+debug: all
 
 clean:
-	rm $(OBJECTS) editortest
+	$(RM) $(OBJ_DIR)/*
+	$(RM) $(APP_DIR)/*

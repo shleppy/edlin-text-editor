@@ -4,65 +4,76 @@
 #include "../include/linenode.h"
 
 TextList::TextList() 
+    :header{new LineNode(nullptr)}, 
+    footer{new LineNode(nullptr)},
+    runner{nullptr}
 {
-    header = new LineNode(nullptr);
-    footer = new LineNode(nullptr);
     header->appendNextNode(footer);
-    runner = nullptr;
-    numOfLines = 0;
 }
 
 TextList::~TextList()
 {
-    setRunner();
+    runner = header;
+    LineNode *lnp;
     while (runner != footer)
     {
-        LineNode *tmp = runner;
-        runner = runner->getNext();
-        delete tmp;
+        lnp = runner->getNext();
+        delete runner;
+        runner = lnp;
     }
-    delete footer;
 }
 
-void TextList::setRunner() 
+void TextList::setRunner(const size_t line)
 {
     runner = header;
+    for (size_t i = 0; i <= line; ++i) 
+    {
+        runner = runner->getNext();
+    }
 }
 
-void TextList::appendLine(SString s)
+void TextList::appendLine(const SString& str)
 {
-    footer->setData(s);
-    footer->appendNextNode(new LineNode(nullptr));
-    footer = footer->getNext();
-    numOfLines++;
+    const auto next = new LineNode(str);
+    footer->appendNextNode(next);
+    footer = next;
+    setRunner(numOfLines++);
 }
 
 void TextList::printAll()
 {
-    setRunner();
+    size_t current_position = 1;
+    setRunner(current_position);
     while (runner != footer)
     {
         runner->printLine();
     }
 }
 
-int TextList::numberOfLines()
+void TextList::printLine(size_t line)
+{
+    setRunner(line);
+    runner->printLine();
+}
+
+size_t TextList::numberOfLines() const
 {
     return numOfLines;
 }
 
-void TextList::insertLine(SString s, int n)
+void TextList::insertLine(const SString& str, const size_t n)
 {
     if (n > numberOfLines()) return;
 
     // loop until correct line
-    setRunner();
+    size_t current_position = 1;
+    setRunner(current_position);
     int i = 0;
     while (i++ != n)
         runner = runner->getNext();
 
     // insert on line n
-    LineNode *line = new LineNode(s);
+    LineNode *line = new LineNode(str);
     LineNode *tmp = runner->getNext();
     runner = line;
     runner->appendNextNode(tmp);
@@ -70,3 +81,12 @@ void TextList::insertLine(SString s, int n)
     // increment number of lines
     numOfLines++;
 }
+
+void TextList::deleteLine(const size_t line)
+{
+    setRunner(line - 1);
+    LineNode *p = runner->getNext();
+    runner->appendNextNode(runner->getNext()->getNext());
+     
+}
+
