@@ -32,7 +32,10 @@ public:
      */
     virtual ~SString();
 
-    char* getData() const;
+    /**
+     * Returns content of string
+     */
+    const char* getData() const;
 
     /**
      * Print content

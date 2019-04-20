@@ -19,6 +19,11 @@ size_t SString::getLength() const
     return len;
 }
 
+const char* SString::getData() const
+{
+    return str;
+}
+
 void SString::print() const
 {
     cout << str;

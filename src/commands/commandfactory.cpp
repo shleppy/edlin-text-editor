@@ -1,6 +1,14 @@
 /* author: Shelby Hendrickx */
 #include "../../include/commands/commandfactory.h"
 #include "../../include/commands/command.h"
+#include "../../include/commands/appendcmd.h"
+#include "../../include/commands/printcmd.h"
+#include "../../include/commands/insertcmd.h"
+#include "../../include/commands/deletecmd.h"
+#include "../../include/commands/extendcmd.h"
+#include "../../include/commands/loadcmd.h"
+#include "../../include/commands/savecmd.h"
+#include "../../include/commands/helpcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
 

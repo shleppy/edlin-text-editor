@@ -1,4 +1,4 @@
-CC       := g++ 
+CC       := g++ -c
 CXXFLAGS := -std=c++0x
 CFLAGS   := -I.
 RM       := rm -rvf
@@ -8,8 +8,8 @@ APP_DIR  := $(BUILD)/apps
 TARGET   := edline
 INCLUDE  := -Iinclude/
 SRC      :=                       \
-	$(wildcard src/commands/*.cpp) \
 	$(wildcard src/*.cpp)          \
+	$(wildcard src/commands/*.cpp) \
 
 OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 

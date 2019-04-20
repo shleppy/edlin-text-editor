@@ -2,6 +2,7 @@
 #ifndef COMMAND_FACTORY_H
 #define COMMAND_FACTORY_H
 #include "command.h"
+#include "../sstring.h"
 #include "../textlist.h"
 
 class CommandFactory 
