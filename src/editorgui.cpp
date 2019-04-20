@@ -12,8 +12,12 @@
 using namespace std;
 
 EditorGUI::EditorGUI()
-    :currentCommand{nullptr}
+    :text{text}
 {
+    string fileName;
+    cout << "Enter file name: ";
+    getline(cin, fileName);
+    file.open(fileName);
 }
 
 EditorGUI::EditorGUI(const char* file)
@@ -29,24 +33,31 @@ EditorGUI::EditorGUI(const char* file)
     }
 }
 
+EditorGUI::~EditorGUI()
+{
+    file.close();
+}
+
 void EditorGUI::start()
 {
     bool running = true;
     while(running)
     {
+        cout << "*";
         string line;
         getline(cin, line);
 
-        SString sline(line.c_str());
+        SString *sline = new SString(line.c_str());
         
-        Command *cmd = CommandFactory::getCommand(text, sline.getData());
-        currentCommand = cmd;
+        Command *cmd = CommandFactory::getCommand(text, sline->getData());
+        //currentCommand = cmd;
 
-        int result = cmd->execute(text, sline);
+        int result = cmd->execute(text, *sline);
         if (result == -1)
             cout << "Unhandled exception" << endl;
         
         delete cmd;
+        delete sline;
     }
 }
 

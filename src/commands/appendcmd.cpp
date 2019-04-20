@@ -16,7 +16,6 @@ int AppendCommand::execute(TextList& text, const SString& str)
     bool isInvalid = true;
     while (isInvalid) 
     {
-        cout << "*";
         cin >> line;
         if (line.length() <= 80) isInvalid = false;
     }

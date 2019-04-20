@@ -12,19 +12,21 @@ LineNode* LineNode::getNext() const
     return next;
 }
 
+void LineNode::appendNextNode(LineNode *node)
+{
+    // ERROR HERE
+    next = node;
+}
+
 SString LineNode::getData() const
 {
     return data;
 }
 
-void LineNode::appendNextNode(LineNode *node)
-{
-    next = node;
-}
 
 void LineNode::printLine() const
 {
     data.print();
-    cout << "\n";
+    cout << endl;
 }
 

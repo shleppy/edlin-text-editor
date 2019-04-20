@@ -34,7 +34,7 @@ void TextList::setRunner(const size_t line)
 
 void TextList::appendLine(const SString& str)
 {
-    const auto next = new LineNode(str);
+    LineNode *next = new LineNode(str);
     footer->appendNextNode(next);
     footer = next;
     setRunner(numOfLines++);

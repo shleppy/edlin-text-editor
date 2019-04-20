@@ -9,24 +9,25 @@
 #include "../../include/commands/loadcmd.h"
 #include "../../include/commands/savecmd.h"
 #include "../../include/commands/helpcmd.h"
+#include "../../include/commands/quitcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
 
-Command* CommandFactory::getCommand(TextList const& text, const SString& str) {
-    Command *cmd;
-    switch (str.getData()[0]) 
+Command* CommandFactory::getCommand(const TextList& gui, const SString& line) 
+{
+    switch (line.getData()[0])
     {
-        case 'a': cmd = new AppendCommand();
-        case 'p': cmd = new PrintCommand();
-        case 'i': cmd = new InsertCommand();
-        case 'd': cmd = new DeleteCommand();
-        case 'x': cmd = new ExtendCommand();
-        case 'l': cmd = new LoadCommand();
-        case 's': cmd = new SaveCommand();
-        case 'h': cmd = new HelpCommand();
-        default: return nullptr;
+        case 'a': return new AppendCommand(); break;
+        case 'p': return new PrintCommand(); break;
+        case 'i': return new InsertCommand(); break;
+        case 'd': return new DeleteCommand(); break;
+        case 'x': return new ExtendCommand(); break;
+        case 'l': return new LoadCommand(); break;
+        case 's': return new SaveCommand(); break;
+        case 'h': return new HelpCommand(); break;
+        case 'q': return new QuitCommand(); break;
+        default:
+            return new HelpCommand();
+            break;
     }
-    return cmd;
-}
-
-
+};

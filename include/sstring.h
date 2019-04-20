@@ -28,7 +28,7 @@ public:
     //SString(SString&& other);
 
     /**
-     * Destructor
+     * Destructorstr
      */
     virtual ~SString();
 
