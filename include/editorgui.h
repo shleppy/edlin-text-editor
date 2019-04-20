@@ -6,15 +6,13 @@
 #include "commands/command.h"
 #include "textlist.h"
 
-using namespace std;
-
 class EditorGUI
 {
     private:
 
         //Command *currentCommand = nullptr;
         TextList text;
-        ofstream file;
+        std::ofstream file;
     public:
         EditorGUI();
         EditorGUI(const char* file);

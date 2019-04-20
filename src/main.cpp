@@ -1,24 +1,23 @@
 /* author: Shelby Hendrickx */
 #include <iostream>
 #include "../include/editorgui.h"
-using namespace std;
 
 int main(int argc, char* argv[])
 {
     // TODO if filename not provided create new file
 
-    cout << "Welcome to Edline" << endl;
+    std::cout << "Welcome to Edline" << std::endl;
 
-    if (argc == 2) 
+    if (argc == 2)
     {
-        cout << "Starting application with file: " <<  argv[1] << endl;
+        std::cout << "Starting application with file: " <<  argv[1] << std::endl;
         EditorGUI(argv[1]).start();
     }
-    else 
+    else
     {
-        cout << "Starting application" << endl;
+        std::cout << "Starting application" << std::endl;
         EditorGUI().start();
     }
-    
+
     return 0;
 }

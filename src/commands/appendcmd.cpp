@@ -5,18 +5,17 @@
 #include "../../include/commands/appendcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
-using namespace std;
 
 AppendCommand::AppendCommand()
 {}
 
 int AppendCommand::execute(TextList& text, const SString& str)
 {
-    string line;
+    std::string line;
     bool isInvalid = true;
-    while (isInvalid) 
+    while (isInvalid)
     {
-        cin >> line;
+        std::cin >> line;
         if (line.length() <= 80) isInvalid = false;
     }
 

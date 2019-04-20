@@ -2,14 +2,13 @@
 #include <iostream>
 #include <string.h>
 #include "../include/sstring.h"
-using namespace std;
 
 SString::SString(const char* str)
     :str{str}, len{strlen(str)}
 { }
 
-SString::SString(const SString& str) 
-    :str{str.str}, len{str.len} 
+SString::SString(const SString& str)
+    :str{str.str}, len{str.len}
 { }
 
 SString::~SString() {}
@@ -26,7 +25,7 @@ const char* SString::getData() const
 
 void SString::print() const
 {
-    cout << str;
+    std::cout << str;
 }
 
 SString SString::operator+(const SString& str) const
