@@ -1,6 +1,5 @@
 /* author: Shelby Hendrickx */
-#ifndef EDITORGUI_H
-#define EDITORGUI_C
+#pragma once
 
 #include <fstream>
 
@@ -9,7 +8,7 @@
 
 using namespace std;
 
-class EditorGUI 
+class EditorGUI
 {
     private:
 
@@ -22,5 +21,3 @@ class EditorGUI
         virtual ~EditorGUI();
         void start();
 };
-
-#endif // EDITORGUI

@@ -1,13 +1,12 @@
 /* author: Shelby Hendrickx */
-#ifndef TEXTLIST_H
-#define TEXTLIST_H
+#pragma once
 #include <cstring>
 #include "sstring.h"
 #include "linenode.h"
 
 /**
  * Container for the full text file
- */ 
+ */
 class TextList
 {
     private:
@@ -21,7 +20,7 @@ class TextList
     public:
         /**
          * Default constructor
-         */ 
+         */
         TextList();
 
         /**
@@ -31,12 +30,12 @@ class TextList
 
         /**
          * Appends parameter s as a new line to the text file.
-         */ 
+         */
         void appendLine(const SString& str);
 
         /**
          * Prints all lines
-         */ 
+         */
         void printAll();
 
         /**
@@ -46,15 +45,13 @@ class TextList
 
         /**
          * Returns number of lines in the text file
-         */ 
+         */
         size_t numberOfLines() const;
 
         /**
          * Inserts parameter s at line n pushing back previously existing lines
-         */ 
+         */
         void insertLine(const SString& str, const size_t n);
 
         void deleteLine(const size_t line);
 };
-
-#endif // TEXTLIST_H

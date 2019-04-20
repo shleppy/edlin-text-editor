@@ -1,6 +1,5 @@
 /* author: Shelby Hendrickx */
-#ifndef SSTRING_H
-#define SSTRING_H
+#pragma once
 #include <cstring>
 
 /**
@@ -19,12 +18,12 @@ public:
 
     /**
      * Copy constructor
-     */ 
+     */
     SString(const SString& other);
 
     /**
      * Move constructor
-     */ 
+     */
     //SString(SString&& other);
 
     /**
@@ -52,5 +51,3 @@ public:
      */
     SString operator+(const SString& str) const;
 };
-
-#endif // SSTRING_H

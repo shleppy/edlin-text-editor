@@ -1,13 +1,10 @@
 /* author: Shelby Hendrickx */
-#ifndef SAVE_COMMAND_H
-#define SAVE_COMMAND_H
+#pragma once
 #include "command.h"
 
 class SaveCommand : public Command
 {
 public:
     int execute(TextList& text, const SString& str) override;
-    SaveCommand();    
+    SaveCommand();
 };
-
-#endif // SAVE_COMMAND_H
