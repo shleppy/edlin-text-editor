@@ -3,7 +3,6 @@
 #include "../../include/commands/loadcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
-using namespace std;
 
 LoadCommand::LoadCommand()
 {}

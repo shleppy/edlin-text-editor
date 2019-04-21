@@ -5,7 +5,6 @@
 #include "../../include/commands/printcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
-using namespace std;
 
 PrintCommand::PrintCommand()
 {}
@@ -25,4 +24,3 @@ int PrintCommand::execute(TextList& text, const SString& cmd)
     }
     return 0;
 }
-

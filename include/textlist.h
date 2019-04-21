@@ -1,13 +1,12 @@
 /* author: Shelby Hendrickx */
-#ifndef TEXTLIST_H
-#define TEXTLIST_H
+#pragma once
 #include <cstring>
 #include "sstring.h"
 #include "linenode.h"
 
 /**
  * Container for the full text file
- */ 
+ */
 class TextList
 {
 private:
@@ -59,5 +58,3 @@ public:
      */
     void deleteLine(const size_t line);
 };
-
-#endif // TEXTLIST_H

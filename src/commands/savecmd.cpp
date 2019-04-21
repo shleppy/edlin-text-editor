@@ -3,7 +3,6 @@
 #include "../../include/commands/savecmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
-using namespace std;
 
 SaveCommand::SaveCommand()
 {}

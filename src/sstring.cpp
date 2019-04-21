@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstring>
 #include "../include/sstring.h"
-using namespace std;
 
 SString::SString(const char* str)
     :len{strlen(str)}, str{new char[len + 1]}
@@ -33,7 +32,7 @@ const char* SString::getData() const
 
 void SString::print() const
 {
-    cout << str;
+    std::cout << str;
 }
 
 SString SString::operator+(const SString& str) const

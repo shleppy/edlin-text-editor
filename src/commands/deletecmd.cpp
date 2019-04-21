@@ -15,4 +15,3 @@ int DeleteCommand::execute(TextList& text, const SString& cmd)
     cout << "NOT IMPLEMENTED" << endl;
     return 0;
 }
-
