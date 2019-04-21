@@ -29,11 +29,6 @@ public:
     const SString& getData() const;
 
     /**
-     * Sets node as next
-     */
-    void appendNextNode(LineNode *node);
-
-    /**
      * Set data
      */
     void setData(const SString& str);

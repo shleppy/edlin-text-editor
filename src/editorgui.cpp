@@ -46,7 +46,7 @@ void EditorGUI::start()
     {
         std::cout << "*";
         std::string line;
-        std::getline(cin, line);
+        std::cin >> line;
 
         SString *sline = new SString(line.c_str());
 

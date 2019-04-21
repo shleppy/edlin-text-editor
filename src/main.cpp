@@ -16,7 +16,7 @@ int main(int argc, char* argv[])
     {
         std::cout << "Starting application with file: " <<  argv[1] << std::endl;
         EditorGUI(argv[1]).start();
-
+    }
     // testSString();
     // testLineNode();
     // testTextList();
@@ -40,13 +40,13 @@ void testSString()
 {
     SString str{"foo"};
     str.print();
-    cout << endl;
+    std::cout << std::endl;
     SString str2{"bar"};
-    cout << str2.getLength() << endl;
+    std::cout << str2.getLength() << std::endl;
 
     SString cat = str + str2;
     cat.print();
-    cout << endl;
+    std::cout << std::endl;
 }
 
 void testLineNode()

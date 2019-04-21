@@ -11,7 +11,7 @@ InsertCommand::InsertCommand()
 
 int InsertCommand::execute(TextList& text, const SString& cmd)
 {
-    cout << "NOT IMPLEMENTED CORRECTLY" << endl;
+    std::cout << "NOT IMPLEMENTED CORRECTLY" << std::endl;
     if (cmd.getLength() > 1)
     {
         // get number after first char (e.g.: with p352 we would need 352)

@@ -29,5 +29,5 @@ void LineNode::setData(const SString& str)
 void LineNode::printLine() const
 {
     data.print();
-    std::cout << endl;
+    std::cout << std::endl;
 }

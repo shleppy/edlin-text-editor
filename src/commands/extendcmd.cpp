@@ -9,7 +9,7 @@ ExtendCommand::ExtendCommand()
 
 int ExtendCommand::execute(TextList& text, const SString& cmd)
 {
-    cout << "NOT IMPLEMENTED" << endl;
+    std::cout << "NOT IMPLEMENTED" << std::endl;
     
     return 0;
 }
