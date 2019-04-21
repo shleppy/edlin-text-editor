@@ -9,10 +9,8 @@
 class EditorGUI
 {
     private:
-
         //Command *currentCommand = nullptr;
-        TextList text;
-        std::ofstream file;
+        TextList *text;
     public:
         EditorGUI();
         EditorGUI(const char* file);

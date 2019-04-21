@@ -11,7 +11,7 @@ private:
     LineNode *next;
     SString data;
 public:
-    LineNode(const SString& data);
+    LineNode(const SString& str);
 
     /**
      * Returns next node
@@ -19,14 +19,24 @@ public:
     LineNode* getNext() const;
 
     /**
+     * Sets node as next
+     */ 
+    void appendNextNode(LineNode *node);
+    
+    /**
      * Get data
      */
-    SString getData() const;
+    const SString& getData() const;
 
     /**
      * Sets node as next
      */
     void appendNextNode(LineNode *node);
+
+    /**
+     * Set data
+     */
+    void setData(const SString& str);
 
     /**
      * Prints data

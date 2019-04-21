@@ -4,10 +4,11 @@
 #include "../include/linenode.h"
 
 TextList::TextList() 
-    :header{new LineNode(nullptr)}, 
-    footer{new LineNode(nullptr)},
-    runner{nullptr}
 {
+    header = new LineNode("");
+    footer = new LineNode("");
+    runner = nullptr;
+
     header->appendNextNode(footer);
 }
 
@@ -42,11 +43,12 @@ void TextList::appendLine(const SString& str)
 
 void TextList::printAll()
 {
-    size_t current_position = 1;
+    size_t current_position = 0;
     setRunner(current_position);
     while (runner != footer)
     {
         runner->printLine();
+        runner = runner->getNext();
     }
 }
 
@@ -63,7 +65,7 @@ size_t TextList::numberOfLines() const
 
 void TextList::insertLine(const SString& str, const size_t n)
 {
-    if (n > numberOfLines()) return;
+    if (n > numberOfLines() || n < 1) return;
 
     // loop until correct line
     size_t current_position = 1;
@@ -87,6 +89,6 @@ void TextList::deleteLine(const size_t line)
     setRunner(line - 1);
     LineNode *p = runner->getNext();
     runner->appendNextNode(runner->getNext()->getNext());
-     
+    delete p;
 }
 
