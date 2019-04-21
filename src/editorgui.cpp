@@ -43,6 +43,7 @@ EditorGUI::~EditorGUI()
 
 void EditorGUI::start()
 {
+    string line;
     bool running = true;
     while(running)
     {

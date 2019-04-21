@@ -5,6 +5,8 @@
 #include "../../include/textlist.h"
 using namespace std;
 
+void printMenu();
+
 HelpCommand::HelpCommand()
 {}
 
@@ -16,5 +18,5 @@ int HelpCommand::execute(TextList& text, const SString& cmd)
 
 void printMenu()
 {
-    cout << "NOT IMPLEMENTED" << endl;
+    cout << "HELP NOT IMPLEMENTED" << endl;
 }

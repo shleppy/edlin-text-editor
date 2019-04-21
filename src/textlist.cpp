@@ -43,7 +43,7 @@ void TextList::appendLine(const SString& str)
 
 void TextList::printAll()
 {
-    size_t current_position = 0;
+    size_t current_position = 1;
     setRunner(current_position);
     while (runner != footer)
     {
