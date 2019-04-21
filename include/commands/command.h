@@ -1,6 +1,5 @@
 /* author: Shelby Hendrickx */
-#ifndef COMMAND_H
-#define COMMAND_H
+#pragma once
 #include "../sstring.h"
 #include "../textlist.h"
 
@@ -8,7 +7,7 @@ class Command {
 public:
     /**
      * Executes the command
-     * Returns the result code of the method 
+     * Returns the result code of the method
      */
     virtual int execute(TextList& text, const SString& str) = 0;
 
@@ -17,5 +16,3 @@ public:
      */
     //virtual ~Command();
 };
-
-#endif // COMMAND_H

@@ -1,6 +1,5 @@
 /* author: Shelby Hendrickx */
-#ifndef LINENODE_H
-#define LINENODE_H
+#pragma once
 #include "sstring.h"
 
 /**
@@ -16,7 +15,7 @@ public:
 
     /**
      * Returns next node
-     */ 
+     */
     LineNode* getNext() const;
 
     /**
@@ -26,8 +25,13 @@ public:
     
     /**
      * Get data
-     */ 
+     */
     const SString& getData() const;
+
+    /**
+     * Sets node as next
+     */
+    void appendNextNode(LineNode *node);
 
     /**
      * Set data
@@ -36,8 +40,6 @@ public:
 
     /**
      * Prints data
-     */ 
+     */
     void printLine() const;
 };
-
-#endif // LINENODE_H

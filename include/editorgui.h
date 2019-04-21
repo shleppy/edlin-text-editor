@@ -1,15 +1,12 @@
 /* author: Shelby Hendrickx */
-#ifndef EDITORGUI_H
-#define EDITORGUI_C
+#pragma once
 
 #include <fstream>
 
 #include "commands/command.h"
 #include "textlist.h"
 
-using namespace std;
-
-class EditorGUI 
+class EditorGUI
 {
     private:
         //Command *currentCommand = nullptr;
@@ -20,5 +17,3 @@ class EditorGUI
         virtual ~EditorGUI();
         void start();
 };
-
-#endif // EDITORGUI

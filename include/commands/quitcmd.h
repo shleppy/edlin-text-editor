@@ -1,13 +1,10 @@
 /* author: Shelby Hendrickx */
-#ifndef QUIT_COMMAND_H
-#define QUIT_COMMAND_H
+#pragma once
 #include "command.h"
 
 class QuitCommand : public Command
 {
-public: 
+public:
     int execute(TextList& text, const SString& str) override;
     QuitCommand();
 };
-
-#endif // QUIT_COMMAND_H
