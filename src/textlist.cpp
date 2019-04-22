@@ -3,6 +3,8 @@
 #include "../include/sstring.h"
 #include "../include/linenode.h"
 
+#include <iostream>
+
 TextList::TextList() 
 {
     header = new LineNode("");
@@ -33,34 +35,9 @@ void TextList::setRunner(const size_t line)
     }
 }
 
-void TextList::appendLine(const SString& str)
+size_t TextList::numberOfLines()
 {
-    LineNode *next = new LineNode(str);
-    footer->appendNextNode(next);
-    footer = next;
-    setRunner(numOfLines++);
-}
-
-void TextList::printAll()
-{
-    size_t current_position = 1;
-    setRunner(current_position);
-    while (runner != footer)
-    {
-        runner->printLine();
-        runner = runner->getNext();
-    }
-}
-
-void TextList::printLine(size_t line)
-{
-    setRunner(line);
-    runner->printLine();
-}
-
-size_t TextList::numberOfLines() const
-{
-    return numOfLines;
+    return numOfLines++;
 }
 
 void TextList::insertLine(const SString& str, const size_t n)
@@ -84,11 +61,38 @@ void TextList::insertLine(const SString& str, const size_t n)
     numOfLines++;
 }
 
+void TextList::appendLine(const SString& str)
+{   
+    LineNode *next = new LineNode(str);
+    setRunner(numOfLines);
+    runner->appendNextNode(next);
+    next->appendNextNode(footer);
+    numOfLines++;
+}
+
 void TextList::deleteLine(const size_t line)
 {
     setRunner(line - 1);
     LineNode *p = runner->getNext();
     runner->appendNextNode(runner->getNext()->getNext());
+    numOfLines--;
     delete p;
+}
+
+void TextList::printLine(size_t line)
+{
+    setRunner(line);
+    runner->printLine();
+}
+
+void TextList::printAll()
+{
+    size_t current_position = 1;
+    setRunner(current_position);
+    while (runner != footer)
+    {
+        runner->printLine();
+        runner = runner->getNext();
+    }
 }
 

@@ -40,7 +40,7 @@ EditorGUI::~EditorGUI()
 
 void EditorGUI::start()
 {
-    string line;
+    std::string line;
     bool running = true;
     while(running)
     {
@@ -48,15 +48,8 @@ void EditorGUI::start()
         std::string line;
         std::cin >> line;
 
-        SString *sline = new SString(line.c_str());
+        SString sline(line.c_str());
 
-        Command *cmd = CommandFactory::getCommand(*text, sline->getData());
-
-        int result = cmd->execute(*text, sline->getData());
-        if (result == -1)
-            std::cout << "Unhandled exception" << std::endl;
-
-        delete cmd;
-        delete sline;
+        CommandFactory::executeCommand(text, sline);
     }
 }

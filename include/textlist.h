@@ -44,9 +44,9 @@ public:
     void printLine(const size_t line);
 
     /**
-     * Returns number of lines in the text file
+     * Computes the number of lines
      */ 
-    size_t numberOfLines() const;
+    size_t numberOfLines();
 
     /**
      * Inserts parameter s at line n pushing back previously existing lines

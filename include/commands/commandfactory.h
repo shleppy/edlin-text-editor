@@ -7,5 +7,5 @@
 class CommandFactory
 {
     public:
-        static Command* getCommand(const TextList& gui, const SString& line);
+        static void executeCommand(TextList* gui, const SString& line);
 };

@@ -5,21 +5,21 @@
 #include "../../include/commands/appendcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
+using namespace std;
 
 AppendCommand::AppendCommand()
 {}
 
 int AppendCommand::execute(TextList& text, const SString& str)
 {
-    std::string line;
-    bool isInvalid = true;
-    while (isInvalid)
-    {
-        std::cin >> line;
-        if (line.length() <= 80) isInvalid = false;
-    }
+    std::string raw;
+    std::cin >> raw;
 
-    SString ret(line.c_str());
-    text.appendLine(ret);
+    std::string formatted;
+    formatted = (raw.length() > 80) ? raw.substr(0, 80) : raw;
+
+    SString ret_str(formatted.c_str());
+    text.appendLine(ret_str);
+
     return 0;
 }

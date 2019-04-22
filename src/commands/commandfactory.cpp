@@ -13,21 +13,21 @@
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
 
-Command* CommandFactory::getCommand(const TextList& gui, const SString& line) 
+void CommandFactory::executeCommand(TextList *text, const SString& line) 
 {
+    Command* cmd;
     switch (line.getData()[0])
     {
-        case 'a': return new AppendCommand(); break;
-        case 'p': return new PrintCommand(); break;
-        case 'i': return new InsertCommand(); break;
-        case 'd': return new DeleteCommand(); break;
-        case 'x': return new ExtendCommand(); break;
-        case 'l': return new LoadCommand(); break;
-        case 's': return new SaveCommand(); break;
-        case 'h': return new HelpCommand(); break;
-        case 'q': return new QuitCommand(); break;
-        default:
-            return new HelpCommand();
-            break;
+        case 'a': cmd = new AppendCommand(); break;
+        case 'p': cmd = new PrintCommand(); break;
+        case 'i': cmd = new InsertCommand(); break;
+        case 'd': cmd = new DeleteCommand(); break;
+        case 'x': cmd = new ExtendCommand(); break;
+        case 'l': cmd = new LoadCommand(); break;
+        case 's': cmd = new SaveCommand(); break;
+        case 'h': cmd = new HelpCommand(); break;
+        case 'q': cmd = new QuitCommand(); break;
+        default: cmd = new HelpCommand(); break;
     }
+    cmd->execute(*text, line);
 };
