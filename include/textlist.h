@@ -4,6 +4,8 @@
 #include "sstring.h"
 #include "linenode.h"
 
+#define NULLFILE "NULL_FILE"
+
 /**
  * Container for the full text file
  */
@@ -16,6 +18,8 @@ private:
     size_t numOfLines = 0;
 
     void setRunner(size_t i);
+    void printToOut();
+    void printToFile(std::string file);
 
 public:
     /**
@@ -36,7 +40,7 @@ public:
     /**
      * Prints all lines
      */ 
-    void printAll();
+    void printAll(std::string file = NULLFILE);
 
     /**
      * Print a single line
@@ -57,4 +61,15 @@ public:
      * Deletes line at parameter line
      */
     void deleteLine(const size_t line);
+
+    /**
+     * Extends 
+     */ 
+    void extendLine(const SString& str, const size_t line);
+
+    /**
+     * Checks if list is empty
+     */
+    bool isEmpty();
+
 };

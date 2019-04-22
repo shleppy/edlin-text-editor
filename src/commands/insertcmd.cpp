@@ -2,26 +2,28 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
+#include "../../include/commands/commandfactory.h"
 #include "../../include/commands/insertcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
+using namespace std;
 
 InsertCommand::InsertCommand()
 {}
 
 int InsertCommand::execute(TextList& text, const SString& cmd)
 {
-    std::cout << "NOT IMPLEMENTED CORRECTLY" << std::endl;
-    if (cmd.getLength() > 1)
-    {
-        // get number after first char (e.g.: with p352 we would need 352)
-        size_t line = atol(cmd.getData() + 1);
-        text.printLine(line);
-    }
-    else
-    {
-        // print whole text file
-        text.printAll();
-    }
+    size_t line = CommandFactory::getLineFromCommand(text, cmd);
+    if (line == -1) return -1;
+
+    std::string raw;
+    std::cin >> raw;
+
+    std::string formatted;
+    formatted = (raw.length() > 80) ? raw.substr(0, 80) : raw;
+
+    SString ret_str(formatted.c_str());
+
+    text.insertLine(ret_str, line);
     return 0;
 }

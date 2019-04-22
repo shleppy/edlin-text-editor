@@ -1,5 +1,6 @@
 /* author: Shelby Hendrickx */
 #pragma once
+#include <iomanip>
 #include "command.h"
 #include "../sstring.h"
 #include "../textlist.h"
@@ -7,5 +8,6 @@
 class CommandFactory
 {
     public:
-        static void executeCommand(TextList* gui, const SString& line);
+        static void executeCommand(TextList* text, const SString& line);
+        static size_t getLineFromCommand(TextList &text, const SString& line);
 };

@@ -1,4 +1,5 @@
 /* author: Shelby Hendrickx */
+#include <iostream>
 #include "../../include/commands/commandfactory.h"
 #include "../../include/commands/command.h"
 #include "../../include/commands/appendcmd.h"
@@ -31,3 +32,14 @@ void CommandFactory::executeCommand(TextList *text, const SString& line)
     }
     cmd->execute(*text, line);
 };
+
+size_t CommandFactory::getLineFromCommand(TextList& text, const SString& line)
+{
+    size_t line_nr = atol(line.getData() + 1);
+    if (line.getLength() <= 1 || line_nr > text.numberOfLines())
+    {
+        std::cout << "Invalid line" << std::endl;
+        return -1;
+    }
+    return line_nr;
+}
