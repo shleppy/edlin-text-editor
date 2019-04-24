@@ -11,7 +11,7 @@ LoadCommand::LoadCommand()
 
 int LoadCommand::execute(TextList& text, const SString& cmd)
 {
-    // TODO reading from file not working yet
+    // TODO  beautify
     if (text.isEmpty())
     {
         
@@ -29,7 +29,7 @@ int LoadCommand::execute(TextList& text, const SString& cmd)
         while (!fs.eof())
         {
             SString sline(line.c_str());
-            std::getline(fs, line);
+            fs >> line;
             text.appendLine(sline);
         }
         fs.close();
@@ -37,7 +37,7 @@ int LoadCommand::execute(TextList& text, const SString& cmd)
     }
     else 
     {
-        
+        std::cout << "There is still text in the buffer" << std::endl;
         return 0;
     }
 }

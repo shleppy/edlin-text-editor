@@ -50,4 +50,10 @@ public:
      * Plus operator for concatenating strings
      */
     SString operator+(const SString& str) const;
+
+    /**
+     * Converts str to a substring start incl, end excl
+     */
+    void subStr(size_t start, size_t end);
+
 };

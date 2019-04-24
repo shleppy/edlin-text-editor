@@ -1,17 +1,14 @@
 /* author: Shelby Hendrickx */
-#include <iomanip>
 #include <iostream>
-#include <string>
 #include "../../include/commands/commandfactory.h"
-#include "../../include/commands/insertcmd.h"
+#include "../../include/commands/replacecmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
-using namespace std;
 
-InsertCommand::InsertCommand()
+ReplaceCommand::ReplaceCommand()
 {}
 
-int InsertCommand::execute(TextList& text, const SString& cmd)
+int ReplaceCommand::execute(TextList& text, const SString& cmd)
 {
     size_t line = CommandFactory::getLineNumberFromCommand(text, cmd);
     if (line == -1) return -1;
@@ -24,6 +21,7 @@ int InsertCommand::execute(TextList& text, const SString& cmd)
 
     SString ret_str(formatted.c_str());
 
-    text.insertLine(ret_str, line);
+    text.replaceLine(ret_str, line);
+
     return 0;
 }

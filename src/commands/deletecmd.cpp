@@ -11,7 +11,7 @@ DeleteCommand::DeleteCommand()
 
 int DeleteCommand::execute(TextList& text, const SString& cmd)
 {
-    size_t line = CommandFactory::getLineFromCommand(text, cmd);
+    size_t line = CommandFactory::getLineNumberFromCommand(text, cmd);
     if (line == -1) return - 1;
 
     text.deleteLine(line);

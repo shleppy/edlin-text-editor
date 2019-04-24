@@ -74,9 +74,17 @@ void TextList::deleteLine(const size_t line)
 
 void TextList::extendLine(const SString& str, const size_t line)
 {
-    //TODO check if total len < 80
     setRunner(line);
-    runner->setData(runner->getData() + str);
+    SString cat_str(runner->getData() + str);
+    if (cat_str.getLength() > 80)
+        cat_str.subStr(0, 80);
+    runner->setData(cat_str);
+}
+
+void TextList::replaceLine(const SString& str, const size_t line)
+{
+    setRunner(line);
+    runner->setData(str);
 }
 
 void TextList::printLine(size_t line)

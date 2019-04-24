@@ -9,6 +9,6 @@ QuitCommand::QuitCommand()
 
 int QuitCommand::execute(TextList& text, const SString& cmd)
 {
-    std::cout << "NOT IMPLEMENTED" << std::endl;
+    std::exit(1);
     return 0;
 }

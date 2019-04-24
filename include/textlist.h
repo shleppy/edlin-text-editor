@@ -63,9 +63,14 @@ public:
     void deleteLine(const size_t line);
 
     /**
-     * Extends 
+     * Appends str to the given line
      */ 
     void extendLine(const SString& str, const size_t line);
+
+    /**
+     * Replaces given line completely with str
+     */
+    void replaceLine(const SString& str, const size_t line);
 
     /**
      * Checks if list is empty
