@@ -9,5 +9,4 @@ class CommandFactory
 {
     public:
         static void executeCommand(TextList* text, const SString& line);
-        static size_t getLineNumberFromCommand(TextList &text, const SString& line);
 };

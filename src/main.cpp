@@ -12,14 +12,9 @@ int main(int argc, char* argv[])
 
     std::cout << "Welcome to Edline" << std::endl;
 
-    if (argc == 2)
-    {
-        std::cout << "Starting application with file: " <<  argv[1] << std::endl;
-        EditorGUI(argv[1]).start();
-    }
-    testSString();
+    // testSString();
     // testLineNode();
-    // testTextList();
+    //testTextList();
 
     if (argc > 1) 
     {
@@ -76,14 +71,22 @@ void testLineNode()
 
 void testTextList()
 {
+    std::cout << "START" << std::endl;
     SString str{"foo"};
     SString str2{"bar"};
-    SString str3{"test"};
+    SString str3{"foobar"};
+    SString test{"teststring"};
 
     TextList *list = new TextList();
     list->appendLine(str);
     list->appendLine(str2);
-    list->printLine(2);
-    list->insertLine(str3, 1);
+    list->appendLine(str3);
+    // list->printAll();
+
+    list->extendLine(test, 2);
+    // list->truncateLine(2, 3);
+    // list->extendLine(str2, 2);
+    // list->extendLine(str2, 2); 
     list->printAll();
+    std::cout << "END" << std::endl;
 }

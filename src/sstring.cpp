@@ -16,6 +16,26 @@ SString::SString(const SString& str)
     strcpy(this->str, str.str);
 }
 
+SString::SString(SString&& other)
+{
+    len = other.len;
+    delete[] str;
+    str = new char[other.len + 1];
+    strcpy(str, other.str);
+
+    other.len = 0;
+    delete[] other.str;
+}
+
+SString SString::operator=(const SString& other)
+{
+    len = other.len;
+    delete[] str;
+    str = new char[other.len + 1];
+    strcpy(str, other.str);
+    return *this;
+}
+
 SString::~SString()
 {
     delete[] str;

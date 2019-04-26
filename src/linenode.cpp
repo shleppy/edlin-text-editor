@@ -3,8 +3,10 @@
 #include "../include/linenode.h"
 
 LineNode::LineNode(const SString& str)
-    :data{str}, next{nullptr}
-{ }
+    :data{str}
+{
+    next = nullptr;
+}
 
 LineNode* LineNode::getNext() const
 {

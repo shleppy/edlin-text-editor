@@ -72,6 +72,14 @@ void TextList::deleteLine(const size_t line)
     delete p;
 }
 
+void TextList::truncateLine(const size_t line, const size_t pos)
+{
+    setRunner(line);
+    SString p = runner->getData();
+    p.subStr(0, pos);
+    runner->setData(p);
+}
+
 void TextList::extendLine(const SString& str, const size_t line)
 {
     setRunner(line);

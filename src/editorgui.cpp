@@ -44,7 +44,7 @@ void EditorGUI::start()
     bool running = true;
     while(running)
     {
-        std::cout << "*";
+        std::cout << endl << "*";
         std::string line;
         std::cin >> line;
 

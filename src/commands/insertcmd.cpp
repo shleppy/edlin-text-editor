@@ -6,6 +6,7 @@
 #include "../../include/commands/insertcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
+#include "../../include/textutils.h"
 using namespace std;
 
 InsertCommand::InsertCommand()
@@ -13,17 +14,11 @@ InsertCommand::InsertCommand()
 
 int InsertCommand::execute(TextList& text, const SString& cmd)
 {
-    size_t line = CommandFactory::getLineNumberFromCommand(text, cmd);
+    size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
     if (line == -1) return -1;
 
-    std::string raw;
-    std::cin >> raw;
+    SString insText = TextUtils::getLineFromCin();
 
-    std::string formatted;
-    formatted = (raw.length() > 80) ? raw.substr(0, 80) : raw;
-
-    SString ret_str(formatted.c_str());
-
-    text.insertLine(ret_str, line);
+    text.insertLine(insText, line);
     return 0;
 }

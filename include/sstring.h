@@ -24,7 +24,9 @@ public:
     /**
      * Move constructor
      */
-    //SString(SString&& other);
+    SString(SString&& other);
+
+    SString operator=(const SString& other);
 
     /**
      * Destructor

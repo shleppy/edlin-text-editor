@@ -1,20 +1,25 @@
 /* author: Shelby Hendrickx */
 #include <iomanip>
+#include <iostream>
 #include "../../include/textutils.h"
 #include "../../include/commands/commandfactory.h"
-#include "../../include/commands/deletecmd.h"
+#include "../../include/commands/truncatecmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
 using namespace std;
 
-DeleteCommand::DeleteCommand()
+TruncateCommand::TruncateCommand()
 {}
 
-int DeleteCommand::execute(TextList& text, const SString& cmd)
+int TruncateCommand::execute(TextList& text, const SString& cmd)
 {
     size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
     if (line == -1) return - 1;
 
-    text.deleteLine(line);
+    std::cout << "position: ";
+    size_t position;
+    std::cin >> position;
+
+    text.truncateLine(line, position);
     return 0;
 }

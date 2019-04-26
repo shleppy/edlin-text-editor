@@ -4,24 +4,18 @@
 #include "../../include/commands/replacecmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
+#include "../../include/textutils.h"
 
 ReplaceCommand::ReplaceCommand()
 {}
 
 int ReplaceCommand::execute(TextList& text, const SString& cmd)
 {
-    size_t line = CommandFactory::getLineNumberFromCommand(text, cmd);
+    size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
     if (line == -1) return -1;
 
-    std::string raw;
-    std::cin >> raw;
+    SString replText = TextUtils::getLineFromCin();
 
-    std::string formatted;
-    formatted = (raw.length() > 80) ? raw.substr(0, 80) : raw;
-
-    SString ret_str(formatted.c_str());
-
-    text.replaceLine(ret_str, line);
-
+    text.replaceLine(replText, line);
     return 0;
 }

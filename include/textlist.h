@@ -63,6 +63,11 @@ public:
     void deleteLine(const size_t line);
 
     /**
+     * Truncates line starting from given position
+     */
+    void truncateLine(const size_t line, const size_t position);
+
+    /**
      * Appends str to the given line
      */ 
     void extendLine(const SString& str, const size_t line);

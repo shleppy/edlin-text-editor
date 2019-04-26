@@ -4,24 +4,18 @@
 #include "../../include/commands/extendcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
+#include "../../include/textutils.h"
 
 ExtendCommand::ExtendCommand()
 {}
 
 int ExtendCommand::execute(TextList& text, const SString& cmd)
 {
-    size_t line = CommandFactory::getLineNumberFromCommand(text, cmd);
+    size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
     if (line == -1) return -1;
 
-    std::string raw;
-    std::cin >> raw;
+    SString extText = TextUtils::getLineFromCin();
 
-    std::string formatted;
-    formatted = (raw.length() > 80) ? raw.substr(0, 80) : raw;
-
-    SString ret_str(formatted.c_str());
-
-    text.extendLine(ret_str, line);
-
+    text.extendLine(extText, line);
     return 0;
 }

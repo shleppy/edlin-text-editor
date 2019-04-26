@@ -12,6 +12,7 @@
 #include "../../include/commands/helpcmd.h"
 #include "../../include/commands/quitcmd.h"
 #include "../../include/commands/replacecmd.h"
+#include "../../include/commands/truncatecmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
 
@@ -27,7 +28,8 @@ void CommandFactory::executeCommand(TextList *text, const SString& line)
         case 'c': cmd = new ReplaceCommand(); break;
         
         case 'd': cmd = new DeleteCommand(); break;
-        
+        case 't': cmd = new TruncateCommand(); break;
+
         case 'p': cmd = new PrintCommand(); break;
         
         case 'l': cmd = new LoadCommand(); break;
@@ -39,14 +41,3 @@ void CommandFactory::executeCommand(TextList *text, const SString& line)
     }
     cmd->execute(*text, line);
 };
-
-size_t CommandFactory::getLineNumberFromCommand(TextList& text, const SString& line)
-{
-    size_t line_nr = atol(line.getData() + 1);
-    if (line.getLength() <= 1 || line_nr > text.numberOfLines())
-    {
-        std::cout << "Invalid line" << std::endl;
-        return -1;
-    }
-    return line_nr;
-}

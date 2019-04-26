@@ -6,6 +6,7 @@
 #include "../../include/commands/printcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
+#include "../../include/textutils.h"
 
 PrintCommand::PrintCommand()
 {}
@@ -14,13 +15,13 @@ int PrintCommand::execute(TextList& text, const SString& cmd)
 {
     if (cmd.getLength() > 1)
     {
-        // get number after first char (e.g.: with p352 we would need 352)
-        size_t line = CommandFactory::getLineNumberFromCommand(text, cmd);
+        // print single line
+        size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
         text.printLine(line);
     }
     else
     {
-        // print whole text file
+        // print all text
         text.printAll();
     }
     return 0;
