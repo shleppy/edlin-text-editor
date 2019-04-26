@@ -95,6 +95,21 @@ void TextList::replaceLine(const SString& str, const size_t line)
     runner->setData(str);
 }
 
+void TextList::mergeLine(const size_t line)
+{
+    setRunner(line);
+    SString cat = runner->getData() + runner->getNext()->getData();
+    if (cat.getLength() > 80)
+        cat.subStr(0, 80);
+    runner->setData(cat);
+    deleteLine(line + 1);
+}
+
+void TextList::splitLine(const SString& splitWord, const size_t line)
+{
+    // TODO implement splitline
+}
+
 void TextList::printLine(size_t line)
 {
     if (line > numOfLines) return;
@@ -104,6 +119,7 @@ void TextList::printLine(size_t line)
 
 void TextList::printAll(std::string file)
 {
+    if (numOfLines == 0) return;
     size_t current_position = 1;
     setRunner(1);
     if (file == NULLFILE)

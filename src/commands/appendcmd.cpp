@@ -1,8 +1,4 @@
-/* author: Sother.len = len;
-    other.str = new char[len];
-    strcpy(other.str, str);
-    len = 0;
-    delete[] str;helby Hendrickx */
+/* author: Shelby Hendrickx */
 #include <iomanip>
 #include <iostream>
 #include <string>

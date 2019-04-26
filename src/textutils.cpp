@@ -17,7 +17,7 @@ size_t TextUtils::getLineNumberFromCommand(TextList& text, const SString& line)
 SString TextUtils::getLineFromCin()
 {
     std::string raw;
-    std::cin >> raw;
+    getline(std::cin, raw);
 
     std::string formatted;
     formatted = (raw.length() > 80) ? raw.substr(0, 80) : raw;

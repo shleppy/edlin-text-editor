@@ -13,6 +13,7 @@
 #include "../../include/commands/quitcmd.h"
 #include "../../include/commands/replacecmd.h"
 #include "../../include/commands/truncatecmd.h"
+#include "../../include/commands/mergecmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
 
@@ -26,9 +27,10 @@ void CommandFactory::executeCommand(TextList *text, const SString& line)
         
         case 'x': cmd = new ExtendCommand(); break;
         case 'c': cmd = new ReplaceCommand(); break;
+        case 'm': cmd = new MergeCommand(); break;
         
+        case 'q': cmd = new TruncateCommand(); break;
         case 'd': cmd = new DeleteCommand(); break;
-        case 't': cmd = new TruncateCommand(); break;
 
         case 'p': cmd = new PrintCommand(); break;
         

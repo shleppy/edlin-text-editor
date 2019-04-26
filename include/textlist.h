@@ -78,6 +78,16 @@ public:
     void replaceLine(const SString& str, const size_t line);
 
     /**
+     * Merges two consecutive line
+     */
+    void mergeLine(const size_t line);
+
+    /**
+     * Splits the given line starting at given word
+     */
+    void splitLine(const SString& fromWord, const size_t line);
+
+    /**
      * Checks if list is empty
      */
     bool isEmpty();

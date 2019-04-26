@@ -26,6 +26,9 @@ public:
      */
     SString(SString&& other);
 
+    /**
+     * Aassignment overloader
+     */
     SString operator=(const SString& other);
 
     /**

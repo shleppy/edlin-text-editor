@@ -47,6 +47,7 @@ void EditorGUI::start()
         std::cout << endl << "*";
         std::string line;
         std::cin >> line;
+        cin.ignore();
 
         SString sline(line.c_str());
 
