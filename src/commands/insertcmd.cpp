@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include "../../include/commands/commandfactory.h"
 #include "../../include/commands/insertcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
@@ -22,3 +21,14 @@ int InsertCommand::execute(TextList& text, const SString& cmd)
     text.insertLine(insText, line);
     return 0;
 }
+
+void InsertCommand::undo(TextList& text)
+{
+    // TODO
+}
+
+void InsertCommand::redo(TextList& text)
+{
+    // TODO
+}
+

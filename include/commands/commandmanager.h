@@ -1,11 +1,16 @@
 /* author: Shelby Hendrickx */
-#include <vector>
+#include <stack>
+#include "undoable.h"
 
 class CommandManager 
 {
 private:
-
+    TextList *text;
+    std::stack<Undoable*> undoStack;
+    std::stack<Undoable*> redoStack;
 public:
-    void undo();
-    void redo();
-}
+    CommandManager();
+    virtual ~CommandManager();
+
+    void executeCommand(TextList *text, const SString& line);
+};

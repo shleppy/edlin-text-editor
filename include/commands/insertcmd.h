@@ -1,10 +1,13 @@
 /* author: Shelby Hendrickx */
 #pragma once
 #include "command.h"
+#include "undoable.h"
 
-class InsertCommand : public Command
+class InsertCommand : public Undoable
 {
 public:
-    int execute(TextList& text, const SString& str) override;
     InsertCommand();
+    int execute(TextList& text, const SString& str) override;
+    void undo(TextList& text) override;
+    void redo(TextList& text) override;
 };

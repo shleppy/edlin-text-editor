@@ -1,6 +1,5 @@
 /* author: Shelby Hendrickx */
 #include <iostream>
-#include "../../include/commands/commandfactory.h"
 #include "../../include/commands/extendcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
@@ -19,3 +18,15 @@ int ExtendCommand::execute(TextList& text, const SString& cmd)
     text.extendLine(extText, line);
     return 0;
 }
+
+void ExtendCommand::undo(TextList& text)
+{
+    // TODO
+}
+
+void ExtendCommand::redo(TextList& text)
+{
+    // TODO
+}
+
+

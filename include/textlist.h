@@ -60,7 +60,7 @@ public:
     /**
      * Deletes line at parameter line
      */
-    void deleteLine(const size_t line);
+    const SString& deleteLine(const size_t line);
 
     /**
      * Truncates line starting from given position

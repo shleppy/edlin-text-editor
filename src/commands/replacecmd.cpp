@@ -1,6 +1,5 @@
 /* author: Shelby Hendrickx */
 #include <iostream>
-#include "../../include/commands/commandfactory.h"
 #include "../../include/commands/replacecmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
@@ -18,4 +17,14 @@ int ReplaceCommand::execute(TextList& text, const SString& cmd)
 
     text.replaceLine(replText, line);
     return 0;
+}
+
+void ReplaceCommand::undo(TextList& text)
+{
+    // TODO
+}
+
+void ReplaceCommand::redo(TextList& text)
+{
+    // TODO
 }

@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <iostream>
 #include "../../include/textutils.h"
-#include "../../include/commands/commandfactory.h"
 #include "../../include/commands/truncatecmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
@@ -22,4 +21,14 @@ int TruncateCommand::execute(TextList& text, const SString& cmd)
 
     text.truncateLine(line, position);
     return 0;
+}
+
+void TruncateCommand::undo(TextList& text)
+{
+    // TODO
+}
+
+void TruncateCommand::redo(TextList& text)
+{
+    // TODO
 }

@@ -7,7 +7,7 @@ class TextUtils
 {
     public:
         static size_t getLineNumberFromCommand(TextList &text, const SString& line);
-        static SString getLineFromCin();
+        static SString* getLineFromCin();
 };
 
 

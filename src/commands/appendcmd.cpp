@@ -9,12 +9,24 @@
 using namespace std;
 
 AppendCommand::AppendCommand()
-{}
+    :insertionText{""}
+{ }
 
 int AppendCommand::execute(TextList& text, const SString& str)
 {
-    SString insText = TextUtils::getLineFromCin();
-    text.appendLine(insText);
-
+    SString* appText = TextUtils::getLineFromCin();
+    text.appendLine(*appText);
+    insertionText = *appText;
+    line = text.numberOfLines();
     return 0;
+}
+
+void AppendCommand::undo(TextList& text)
+{
+    text.deleteLine(line);
+}
+
+void AppendCommand::redo(TextList& text)
+{
+    text.appendLine(insertionText);
 }

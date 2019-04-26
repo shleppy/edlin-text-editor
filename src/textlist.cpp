@@ -63,13 +63,15 @@ void TextList::appendLine(const SString& str)
     numOfLines++;
 }
 
-void TextList::deleteLine(const size_t line)
+const SString& TextList::deleteLine(const size_t line)
 {
     setRunner(line - 1);
     LineNode *p = runner->getNext();
+    const SString &deletedText = p->getData(); 
     runner->appendNextNode(runner->getNext()->getNext());
     numOfLines--;
     delete p;
+    return deletedText;
 }
 
 void TextList::truncateLine(const size_t line, const size_t pos)

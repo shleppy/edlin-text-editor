@@ -8,20 +8,18 @@ void testTextList();
 
 int main(int argc, char* argv[])
 {
-    // TODO if filename not provided create new file
-
     std::cout << "Welcome to Edline" << std::endl;
 
     // testSString();
     // testLineNode();
-    //testTextList();
+    // testTextList();
 
     if (argc > 1) 
     {
         const char* fileName = argv[1];
         EditorGUI gui{fileName};
         gui.start();
-    }
+    } 
     else
     {
         EditorGUI gui{};
@@ -30,6 +28,7 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
 
 void testSString()
 {

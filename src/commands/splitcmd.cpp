@@ -1,6 +1,5 @@
 /* author: Shelby Hendrickx */
 #include <iostream>
-#include "../../include/commands/commandfactory.h"
 #include "../../include/commands/splitcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"
@@ -19,3 +18,14 @@ int SplitCommand::execute(TextList& text, const SString& cmd)
     text.splitLine(splitWord, line);
     return 0;
 }
+
+void SplitCommand::undo(TextList& text)
+{
+    // TODO
+}
+
+void SplitCommand::redo(TextList& text)
+{
+    // TODO
+}
+

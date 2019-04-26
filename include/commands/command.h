@@ -10,9 +10,4 @@ public:
      * Returns the result code of the method
      */
     virtual int execute(TextList& text, const SString& str) = 0;
-
-    /**
-     * Default destructor
-     */
-    //virtual ~Command();
 };

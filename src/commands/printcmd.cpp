@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include "../../include/commands/commandfactory.h"
 #include "../../include/commands/printcmd.h"
 #include "../../include/sstring.h"
 #include "../../include/textlist.h"

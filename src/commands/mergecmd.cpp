@@ -14,3 +14,13 @@ int MergeCommand::execute(TextList& text, const SString& cmd)
     text.mergeLine(line);
     return 0;
 }
+
+void MergeCommand::undo(TextList& text)
+{
+    // TODO
+}
+
+void MergeCommand::redo(TextList& text)
+{
+    // TODO
+}

@@ -4,23 +4,23 @@
 #include <iomanip>
 #include <string>
 
-#include "../include/editorgui.h"
 #include "../include/sstring.h"
-#include "../include/commands/commandfactory.h"
+#include "../include/editorgui.h"
 #include "../include/commands/command.h"
 
 #include <iostream>
 using namespace std;
 
 EditorGUI::EditorGUI()
+    :text{new TextList()},
+    manager{new CommandManager()}
 {
-    text = new TextList();
 }
 
 EditorGUI::EditorGUI(const char* file)
+    :text{new TextList()},
+    manager{new CommandManager()}
 {
-    text = new TextList();
-
     std::ifstream fs(file);
     if (!fs.is_open()) return;
     std::string line;
@@ -51,6 +51,7 @@ void EditorGUI::start()
 
         SString sline(line.c_str());
 
-        CommandFactory::executeCommand(text, sline);
+        manager->executeCommand(text, sline);
+
     }
 }
