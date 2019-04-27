@@ -14,9 +14,9 @@ AppendCommand::AppendCommand()
 
 int AppendCommand::execute(TextList& text, const SString& str)
 {
-    SString* appText = TextUtils::getLineFromCin();
-    text.appendLine(*appText);
-    insertionText = *appText;
+    SString appText = TextUtils::getLineFromCin().get()->getData();
+    text.appendLine(appText);
+    insertionText = appText;
     line = text.numberOfLines();
     return 0;
 }

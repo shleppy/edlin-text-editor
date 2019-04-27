@@ -13,7 +13,7 @@ int ExtendCommand::execute(TextList& text, const SString& cmd)
     size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
     if (line == -1) return -1;
 
-    SString extText = TextUtils::getLineFromCin();
+    SString extText = TextUtils::getLineFromCin().get()->getData();
 
     text.extendLine(extText, line);
     return 0;

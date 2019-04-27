@@ -39,6 +39,12 @@ CommandManager::~CommandManager()
     }
 }
 
+void CommandManager::handleUndoCommand(TextList *text, const SString& line, Undoable* cmd)
+{
+    cmd->execute(*text, line);
+    undoStack.push(cmd);
+}
+
 void CommandManager::executeCommand(TextList *text, const SString& line) 
 {
     // TODO fix mem management, use references over pointers
@@ -48,60 +54,51 @@ void CommandManager::executeCommand(TextList *text, const SString& line)
         case 'a':
         {
             Undoable *cmd = new AppendCommand();
-            std::cout << "back here again" << std::endl;
-            cmd->execute(*text, line);
-            undoStack.push(cmd);
+            handleUndoCommand(text, line, cmd);
             break;
         }
         case 'i': 
         {
             Undoable *cmd = new InsertCommand();
-            cmd->execute(*text, line);
-            undoStack.push(cmd);
+            handleUndoCommand(text, line, cmd);
             break;
         }
 
         case 'x': 
         {
             Undoable *cmd = new ExtendCommand();
-            cmd->execute(*text, line);
-            undoStack.push(cmd);
+            handleUndoCommand(text, line, cmd);
             break;
         }
         case 'c':
         {
             Undoable *cmd = new ReplaceCommand();
-            cmd->execute(*text, line);
-            undoStack.push(cmd);
+            handleUndoCommand(text, line, cmd);
             break;
         }
         case 'm': 
         {
             Undoable *cmd = new MergeCommand();
-            cmd->execute(*text, line);
-            undoStack.push(cmd);
+            handleUndoCommand(text, line, cmd);
             break;
         }
 
         case 'q':
         {
             Undoable *cmd = new TruncateCommand();
-            cmd->execute(*text, line);
-            undoStack.push(cmd);
+            handleUndoCommand(text, line, cmd);
             break;
         }
         case 'd':
         {
             Undoable *cmd = new DeleteCommand();
-            cmd->execute(*text, line);
-            undoStack.push(cmd);
+            handleUndoCommand(text, line, cmd);
             break;
         }
         case 't':
         {
             Undoable *cmd = new SplitCommand();
-            cmd->execute(*text, line);
-            undoStack.push(cmd);
+            handleUndoCommand(text, line, cmd);
             break;
         }
 
@@ -127,6 +124,7 @@ void CommandManager::executeCommand(TextList *text, const SString& line)
 
         case 'u':
         {
+            if (undoStack.empty()) return;
             Undoable *undo = undoStack.top();
             redoStack.push(undo);
             undoStack.pop();
@@ -135,6 +133,7 @@ void CommandManager::executeCommand(TextList *text, const SString& line)
         }
         case 'r':
         {
+            if (redoStack.empty()) return;
             Undoable *redo = redoStack.top();
             undoStack.push(redo);
             redoStack.pop();

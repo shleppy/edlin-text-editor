@@ -9,26 +9,30 @@
 using namespace std;
 
 InsertCommand::InsertCommand()
+    :insertionText{""}
 {}
 
 int InsertCommand::execute(TextList& text, const SString& cmd)
 {
-    size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
-    if (line == -1) return -1;
+    size_t lineNr = TextUtils::getLineNumberFromCommand(text, cmd);
+    if (lineNr == -1) return -1;
 
-    SString insText = TextUtils::getLineFromCin();
+    line = lineNr;
+    insertionText = TextUtils::getLineFromCin().get()->getData();
 
-    text.insertLine(insText, line);
+    text.insertLine(insertionText, lineNr);
     return 0;
 }
 
 void InsertCommand::undo(TextList& text)
 {
     // TODO
+    text.deleteLine(line);
 }
 
 void InsertCommand::redo(TextList& text)
 {
     // TODO
+    text.insertLine(insertionText, line);
 }
 

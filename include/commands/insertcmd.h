@@ -5,6 +5,9 @@
 
 class InsertCommand : public Undoable
 {
+private:
+    size_t line;
+    SString insertionText;
 public:
     InsertCommand();
     int execute(TextList& text, const SString& str) override;

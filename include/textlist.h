@@ -1,5 +1,6 @@
 /* author: Shelby Hendrickx */
 #pragma once
+#include <memory>
 #include <cstring>
 #include "sstring.h"
 #include "linenode.h"
@@ -60,7 +61,7 @@ public:
     /**
      * Deletes line at parameter line
      */
-    const SString& deleteLine(const size_t line);
+    std::shared_ptr<SString> deleteLine(const size_t line);
 
     /**
      * Truncates line starting from given position

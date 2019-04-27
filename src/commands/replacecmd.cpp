@@ -13,7 +13,7 @@ int ReplaceCommand::execute(TextList& text, const SString& cmd)
     size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
     if (line == -1) return -1;
 
-    SString replText = TextUtils::getLineFromCin();
+    SString replText = TextUtils::getLineFromCin().get()->getData();
 
     text.replaceLine(replText, line);
     return 0;

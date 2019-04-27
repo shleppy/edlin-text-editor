@@ -13,7 +13,7 @@ int SplitCommand::execute(TextList& text, const SString& cmd)
     size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
     if (line == -1) return -1;
 
-    SString splitWord = TextUtils::getLineFromCin();
+    SString splitWord = TextUtils::getLineFromCin().get()->getData();
 
     text.splitLine(splitWord, line);
     return 0;

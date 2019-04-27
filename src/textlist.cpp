@@ -1,6 +1,7 @@
 /* author: Shelby Hendrickx */
 #include <string>
 #include <fstream>
+#include <memory>
 #include "../include/textlist.h"
 #include "../include/sstring.h"
 #include "../include/linenode.h"
@@ -44,7 +45,7 @@ size_t TextList::numberOfLines()
 
 void TextList::insertLine(const SString& str, const size_t n)
 {
-    if (n > numberOfLines() || n < 1) return;
+    if (n < 1 || n > numberOfLines()) return;
 
     setRunner(n - 1);
     LineNode *line = new LineNode(str);
@@ -63,14 +64,15 @@ void TextList::appendLine(const SString& str)
     numOfLines++;
 }
 
-const SString& TextList::deleteLine(const size_t line)
+std::shared_ptr<SString> TextList::deleteLine(const size_t line)
 {
     setRunner(line - 1);
-    LineNode *p = runner->getNext();
-    const SString &deletedText = p->getData(); 
+    // save element to remove
+    std::shared_ptr<SString> 
+        deletedText(new SString(runner->getNext()->getData().getData()));
+    // remove element from linked list
     runner->appendNextNode(runner->getNext()->getNext());
     numOfLines--;
-    delete p;
     return deletedText;
 }
 

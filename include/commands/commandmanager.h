@@ -8,6 +8,7 @@ private:
     TextList *text;
     std::stack<Undoable*> undoStack;
     std::stack<Undoable*> redoStack;
+    void handleUndoCommand(TextList *text, const SString& line, Undoable *cmd);
 public:
     CommandManager();
     virtual ~CommandManager();
