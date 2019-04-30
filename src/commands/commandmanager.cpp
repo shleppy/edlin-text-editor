@@ -43,6 +43,7 @@ void CommandManager::handleUndoCommand(TextList *text, const SString& line, Undo
 {
     cmd->execute(*text, line);
     undoStack.push(cmd);
+    redoStack = std::stack<Undoable*>(); 
 }
 
 void CommandManager::executeCommand(TextList *text, const SString& line) 

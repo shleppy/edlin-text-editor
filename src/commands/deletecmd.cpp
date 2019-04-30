@@ -25,7 +25,7 @@ int DeleteCommand::execute(TextList& text, const SString& cmd)
 
 void DeleteCommand::undo(TextList& text)
 {
-    text.insertLine(deletedText, line);
+    text.insertLine(deletedText, line - 1);
 }
 
 void DeleteCommand::redo(TextList& text)

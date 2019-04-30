@@ -45,20 +45,22 @@ size_t TextList::numberOfLines()
 
 void TextList::insertLine(const SString& str, const size_t n)
 {
-    if (n < 1 || n > numberOfLines()) return;
-
-    setRunner(n - 1);
-    LineNode *line = new LineNode(str);
-    line->appendNextNode(runner->getNext());
-    runner->appendNextNode(line);
-
+    if (n == numOfLines) 
+    {
+        appendLine(str);
+        return;
+    }
+    setRunner(n);
+    LineNode *ins = new LineNode(str);
+    ins->appendNextNode(runner->getNext());
+    runner->appendNextNode(ins);
     numOfLines++;
 }
 
 void TextList::appendLine(const SString& str)
 {   
-    LineNode *next = new LineNode(str);
     setRunner(numOfLines);
+    LineNode *next = new LineNode(str);
     runner->appendNextNode(next);
     next->appendNextNode(footer);
     numOfLines++;

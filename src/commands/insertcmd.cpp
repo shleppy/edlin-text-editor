@@ -20,7 +20,7 @@ int InsertCommand::execute(TextList& text, const SString& cmd)
     line = lineNr;
     insertionText = TextUtils::getLineFromCin().get()->getData();
 
-    text.insertLine(insertionText, lineNr);
+    text.insertLine(insertionText, lineNr - 1);
     return 0;
 }
 
@@ -33,6 +33,6 @@ void InsertCommand::undo(TextList& text)
 void InsertCommand::redo(TextList& text)
 {
     // TODO
-    text.insertLine(insertionText, line);
+    text.insertLine(insertionText, line - 1);
 }
 
