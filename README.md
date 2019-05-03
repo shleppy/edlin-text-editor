@@ -58,8 +58,8 @@ _Note: I know this may not be optimal at the moment, but the application is curr
 | Quit | e | - | - | Exits the application |
 
 
-* Last known command that is undoable (e.g. append, insert, delete, truncate, merge, etc.)
-** Last undone command that is known. Resets after any command has been entered.
+\*Last known command that is undoable (e.g. append, insert, delete, truncate, merge, etc.)
+\*\*Last undone command that is known. Resets after any command has been entered.
 
 
 
