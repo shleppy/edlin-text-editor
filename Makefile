@@ -5,7 +5,7 @@ RM       := rm -rvf
 BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
 APP_DIR  := $(BUILD)/apps
-TARGET   := edline
+TARGET   := edlin
 INCLUDE  := -Iinclude/
 SRC      :=                       \
 	$(wildcard src/*.cpp)          \
@@ -15,7 +15,7 @@ OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 all: build $(APP_DIR)/$(TARGET)
 
-edline: $(OBJECTS)
+edlin: $(OBJECTS)
 	$(CC) $(CXXFLAGS) $(LIBS) $(CFLAGS) $^ -o $@
 
 $(OBJ_DIR)/%.o: %.cpp
