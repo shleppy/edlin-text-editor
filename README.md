@@ -58,12 +58,29 @@ _Note: I know this may not be optimal at the moment, but the application is curr
 | Quit | e | - | - | Exits the application |
 
 
-\*Last known command that is undoable (e.g. append, insert, delete, truncate, merge, etc.)
-\*\*Last undone command that is known. Resets after any command has been entered.
+\*Last known command that is undoable (e.g. append, insert, delete, truncate, merge, etc.)  
+\*\*Last undone command that is known. Resets after any command has been entered.  
 
+## Extra information
+#### General application info
+* If the optional line numbers for certain commands are not passed the application assumes the current line (probably last line).  
+* All advanced commands were optional assignments and therefor won't be checked on correctness.  
+* PR are welcome
+* Improvement tips are welcome
+* Donations for a software engineering student are welcome
 
+#### Assignment information
+The assignment is the first assignment for the course unmanaged programming languages(UNPL).
+Goals:  
+* Learning C++
+* Dynamic memory allocation
+* Pass by value, reference, address
+* Data structures
+* Purpose is an intermediate assignment in a new topic(unmanaged programming)
 
-
-
-
+Requirements:  
+* declaration and implementation seperated in .h and .cpp files
+* use of make
+* internal structure should be singly linked list with both dummy header and footer
+* general preconditions following the use-case descriptions, class diagram and sequence diagrams.(not included here)
 
