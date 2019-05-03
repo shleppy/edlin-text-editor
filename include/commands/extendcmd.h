@@ -5,6 +5,10 @@
 
 class ExtendCommand : public Undoable
 {
+private:
+    SString original;
+    SString extended;
+    size_t line;
 public:
     ExtendCommand();
     

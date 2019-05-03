@@ -6,27 +6,30 @@
 #include "../../include/textutils.h"
 
 ExtendCommand::ExtendCommand()
+    :original{""}, extended{""} 
 {}
 
 int ExtendCommand::execute(TextList& text, const SString& cmd)
 {
-    size_t line = TextUtils::getLineNumberFromCommand(text, cmd);
-    if (line == -1) return -1;
+    size_t lineNr = TextUtils::getLineNumberFromCommand(text, cmd);
+    if (lineNr == -1) return -1;
 
+    line = lineNr;
+    original = text.getLine(line);
+    std::cout << " oops " << std::endl;
     SString extText = TextUtils::getLineFromCin().get()->getData();
-
-    text.extendLine(extText, line);
+    extended = extText;
+    text.extendLine(extText, lineNr);
     return 0;
 }
 
 void ExtendCommand::undo(TextList& text)
 {
-    // TODO
+    text.replaceLine(original, line);
 }
 
 void ExtendCommand::redo(TextList& text)
 {
-    // TODO
+    text.extendLine(extended, line);
 }
-
 

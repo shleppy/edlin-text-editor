@@ -116,6 +116,12 @@ void TextList::splitLine(const SString& splitWord, const size_t line)
     // TODO implement splitline
 }
 
+SString TextList::getLine(const size_t line)
+{
+    setRunner(line);
+    return runner->getData();
+}
+
 void TextList::printLine(size_t line)
 {
     if (line > numOfLines) return;

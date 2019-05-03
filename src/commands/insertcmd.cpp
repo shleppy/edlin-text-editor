@@ -26,13 +26,11 @@ int InsertCommand::execute(TextList& text, const SString& cmd)
 
 void InsertCommand::undo(TextList& text)
 {
-    // TODO
     text.deleteLine(line);
 }
 
 void InsertCommand::redo(TextList& text)
 {
-    // TODO
     text.insertLine(insertionText, line - 1);
 }
 

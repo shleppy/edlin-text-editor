@@ -54,6 +54,11 @@ public:
     size_t numberOfLines();
 
     /**
+     * Returns the content of a line
+     */
+    SString getLine(const size_t line);
+
+    /**
      * Inserts parameter s at line n pushing back previously existing lines
      */ 
     void insertLine(const SString& str, const size_t line);
